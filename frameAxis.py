@@ -31,7 +31,7 @@ class FrameAxis:
         else:
             raise ValueError(f'Invalid mfd value: {mfd}')
 
-        self.axes, categories = self._compute_axes(words_df)
+        self.axes, categories = self._get_emfd_axes(words_df)
         print('axes names: ', categories)
 
         # self.cos_sim_dict = {'authority': {}, 'fairness': {}, 'general_morality': {}, 'harm': {}, 'ingroup': {},
