@@ -49,6 +49,13 @@ if __name__ == '__main__':
 
     data = pd.read_csv(IN_PATH, lineterminator='\n')
 
+    # 在 main.py 中加载数据后立即打印列名
+    data = pd.read_csv(input_file)
+    print("Columns in the data after loading:", data.columns)
+
+    # 确保数据在传递给 FrameAxis 类之前没有丢失 'Post' 列
+
+
     fa = FrameAxis(mfd=DICT_TYPE, w2v_model=model)
     mf_scores = fa.get_fa_scores(df=data, doc_colname=DOCS_COL, tfidf=False, format="virtue_vice",
                                  save_path=OUT_CSV_PATH)
