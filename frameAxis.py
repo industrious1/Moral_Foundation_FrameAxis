@@ -62,14 +62,14 @@ class FrameAxis:
 
     def cos_sim(self, a, b):
     # 确保向量是 1D 的
-    a = np.squeeze(a)  # 将 (1, 768) 转换为 (768,)
-    b = np.squeeze(b)  # 将 (1, 768) 转换为 (768,)
-    
-    # 计算余弦相似度
-    dot = np.dot(a, b)
-    norma = np.linalg.norm(a)
-    normb = np.linalg.norm(b)
-    return dot / (norma * normb)
+        a = np.squeeze(a)  # 将 (1, 768) 转换为 (768,)
+        b = np.squeeze(b)  # 将 (1, 768) 转换为 (768,)
+        
+        # 计算余弦相似度
+        dot = np.dot(a, b)
+        norma = np.linalg.norm(a)
+        normb = np.linalg.norm(b)
+        return dot / (norma * normb)
 
 
     def _get_emfd_axes(self, eMFD):
