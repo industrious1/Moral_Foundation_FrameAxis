@@ -50,9 +50,9 @@ if args.word_embedding_model is not None:
     print(f"Loading word embedding model from {W2V_PATH}")
     model = KeyedVectors.load_word2vec_format(W2V_PATH, binary=False)
 else:
-    print('Downloading word embedding model: word2vec-google-news-300')
+    print('Downloading word embedding model: glove-twitter-200')
     import gensim.downloader
-    model = gensim.downloader.load('word2vec-google-news-300')
+    model = gensim.downloader.load('glove-twitter-200')
 
 print("Word embedding model loaded successfully.")
 
