@@ -65,7 +65,7 @@ def w2v_update_gensim(sentences_tokenized, pretrained_path=None, save_path=None)
         new_model.train(sentences_tokenized, total_examples=total_examples, epochs=new_model.epochs)
         print('count of vocab at the end: ', len(new_model.wv.vocab))
     else:
-        new_model = Word2Vec(sentences_tokenized, size=300, min_count=1)
+        new_model = Word2Vec(sentences_tokenized, size=300, min_count=8)
         model = None
 
     if save_path:
