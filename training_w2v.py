@@ -35,7 +35,7 @@ def w2v_update(data: list, save_path_new=None, pretrained_w2v=None):
     # form trigrams
     preprocessed_texts = make_trigrams(preprocessed_texts)
     # training word2vec model
-    new_model, old_model = w2v_old_gensim(sentences_tokenized=preprocessed_texts, pretrained_path=google_news_w2v,
+    new_model, old_model = w2v_old_gensim(sentences_tokenized=preprocessed_texts, pretrained_path=glove-twitter-200,
                                           save_path=save_path_new)
     return new_model, old_model
 
@@ -55,7 +55,7 @@ def w2v_update_gensim(sentences_tokenized, pretrained_path=None, save_path=None)
         print('count of vocab before update: ', len(new_model.wv.vocab))
         total_examples = new_model.corpus_count
         model = KeyedVectors.load_word2vec_format(pretrained_path, binary=True)
-        print('count of vocab for google news: ', len(model.wv.vocab))
+        print('count of vocab for twitter posts: ', len(model.wv.vocab))
         new_model.build_vocab([list(model.vocab.keys())], update=True)
         print('count of vocab after update: ', len(new_model.wv.vocab))
         # todo play with lockf
@@ -75,5 +75,7 @@ def w2v_update_gensim(sentences_tokenized, pretrained_path=None, save_path=None)
 
 
 if __name__ == '__main__':
-    google_news_w2v = "./GoogleNews-vectors-negative300.bin"
-    w2v_update(save_path_new="updated_word_embeddings.txt", pretrained_w2v=google_news_w2v)
+    import gensim.downloader as api
+    # 使用 Gensim 加载 glove-twitter-200 预训练模型
+    glove_twitter_200 = api.load('glove-twitter-200')
+    w2v_update(save_path_new="updated_word_embeddings.txt", pretrained_w2v=glove_twitter_200)
